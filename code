@@ -1,0 +1,228 @@
+from pygame.locals import *
+import time
+import pygame
+pygame.mixer.pre_init(44100,16, 2, 4096)
+pygame.init()
+screen = pygame.display.set_mode((1199,700))
+pygame.display.set_caption("Super Kirby Clash")
+yellow = (235,225,0)
+red = (255, 0, 0)
+blue = (0, 0, 255)
+green = (0, 255, 0)
+pink = (175, 0, 175)
+orange = (240, 100, 0)
+black = (0,0,0)
+white = (255,255,255)
+clock = pygame.time.Clock()
+
+
+
+MetaBasic1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaBasic1.png')
+MetaBasic2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaBasic2.png')
+
+MetaBasic = [MetaBasic1,MetaBasic2]
+
+MetaDuck2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaDuck2.png')
+
+MetaDuck = [MetaDuck2,MetaDuck2]
+
+MetaWalk2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaWalk2.png')
+MetaWalk3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaWalk3.png')
+MetaWalk4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaWalk4.png')
+MetaWalk5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaWalk5.png')
+MetaWalk6 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/MetaWalk6.png')
+
+MetaWalkLeft = [MetaBasic1,MetaWalk2,MetaWalk3,MetaWalk4,MetaWalk5,MetaWalk6]
+
+MetaWalkRight = []
+
+for each in MetaWalkLeft:
+    MetaWalkRight.append(pygame.transform.flip(each,True,False))
+
+kirbyStab1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyStab1.png')
+kirbyStab2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyStab2.png')
+kirbyStab3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyStab3.png')
+kirbyStab4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyStab4.png')
+kirbyStab5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyStab5.png')
+kirbyStab6 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyStab6.png')
+
+kirbyStab = [kirbyStab1,kirbyStab2,kirbyStab3,kirbyStab4,kirbyStab5,kirbyStab6,kirbyStab5,kirbyStab4,kirbyStab3,kirbyStab2,kirbyStab1]
+
+kirbyBasic1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyBasic1.png')
+kirbyBasic2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyBasic2.png')
+
+kirbyBasic = [kirbyBasic1,kirbyBasic1,kirbyBasic1,kirbyBasic1,kirbyBasic1,kirbyBasic1,kirbyBasic1,kirbyBasic1,kirbyBasic2]
+
+kirbyWalking1n1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n1.png')
+kirbyWalking1n2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n2.png')
+kirbyWalking1n3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n3.png')
+kirbyWalking1n4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n4.png')
+kirbyWalking1n5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n5.png')
+kirbyWalking1n6 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n6.png')
+kirbyWalking1n7 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n7.png')
+kirbyWalking1n8 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyWalking1n8.png')
+
+kirbyWalkingRight = [kirbyWalking1n1,kirbyWalking1n2,kirbyWalking1n3,kirbyWalking1n4,kirbyWalking1n5,kirbyWalking1n6,kirbyWalking1n7,kirbyWalking1n8]
+kirbyWalkingLeft = []
+for each in kirbyWalkingRight:
+    kirbyWalkingLeft.append(pygame.transform.flip(each,True,False))
+
+kirbyJumpLand1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding1.png')
+kirbyJumpLand2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding2.png')
+kirbyJumpLand3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding3.png')
+kirbyJumpLand4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding4.png')
+kirbyJumpLand5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding5.png')
+kirbyJumpLand6 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding6.png')
+kirbyJumpLand7 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding7.png')
+kirbyJumpLand8 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding8.png')
+kirbyJumpLand9 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding9.png')
+kirbyJumpLand10 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyJumpingLanding10.png')
+
+KirbyJumpLand = [kirbyJumpLand1,kirbyJumpLand2,kirbyJumpLand3,kirbyJumpLand4,kirbyJumpLand5,kirbyJumpLand6,kirbyJumpLand7,kirbyJumpLand8,kirbyJumpLand9,kirbyJumpLand10]
+
+kirbyHurt1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyHurtTired1.png')
+kirbyHurt2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyHurtTired2.png')
+kirbyHurt3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyHurtTired3.png')
+kirbyHurt4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyHurtTired4.png')
+kirbyHurt5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyHurtTired5.png')
+
+kirbyHurt = [kirbyHurt1,kirbyHurt2,kirbyHurt3,kirbyHurt4,kirbyHurt5]
+
+kirbySucking1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbySucking1.png')
+kirbySucking2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbySucking2.png')
+kirbySucking3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbySucking3.png')
+kirbySucking4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbySucking4.png')
+kirbySucking5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbySucking5.png')
+
+kirbySucking = 1
+
+kSuck1 = [kirbySucking1,kirbySucking2]
+kSuck2 = [kirbySucking4,kirbySucking5]
+kSuck3 = [kirbySucking2,kirbySucking3]
+
+kirbyRun1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun1.png')
+kirbyRun2 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun2.png')
+kirbyRun3 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun3.png')
+kirbyRun4 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun4.png')
+kirbyRun5 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun5.png')
+kirbyRun6 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun6.png')
+kirbyRun7 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun7.png')
+kirbyRun8 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/kirbyRun8.png')
+
+kirbyRunRight = [kirbyRun1,kirbyRun2,kirbyRun3,kirbyRun4,kirbyRun5,kirbyRun6,kirbyRun7,kirbyRun8]
+kirbyRunLeft = []
+
+for each in kirbyRunRight:
+    kirbyRunLeft.append(pygame.transform.flip(each,True,False))
+
+x = 0
+y = 535
+X = 1070
+Y = 535
+moveSpeed = 0
+jumpSpeed = 0
+MoveSpeed=0
+JumpSpeed=0
+kirbyAction=kirbyBasic
+metaAction=MetaBasic
+bg1 = pygame.image.load('C:/Users/bubus/OneDrive/Desktop/kirbySprites/bg1.jpg')
+kFrame=0
+mFrame=0
+
+while True:
+    clock.tick(10)
+    pygame.display.update()
+    screen.fill(black)
+    screen.blit(bg1,(0,0))
+    if jumpSpeed < 0 and y < 450:
+        jumpSpeed=10
+        
+    if y>540:
+        y=540
+        jumpSpeed=0
+    x=x+moveSpeed
+    y+=jumpSpeed
+    X=X+MoveSpeed
+    Y=Y+JumpSpeed
+    
+    kirbyIndex=kirbyAction[kFrame]
+    metaIndex=metaAction[mFrame]
+    screen.blit(kirbyIndex,(x,y))
+    screen.blit(metaIndex,(X,Y))
+  #  print(kFrame,len(kirbyAction),kirbyAction[kFrame])
+    if len(kirbyAction) > 1:
+        if kFrame == len(kirbyAction)-1:
+            kFrame=0
+        else:
+            kFrame+=1
+
+    if len(metaAction) > 1:
+        if mFrame == len(metaAction)-1:
+            mFrame=0
+        else:
+            mFrame+=1
+
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            exit()
+        elif event.type == KEYDOWN:
+            if event.key == K_LEFT:
+                metaAction=MetaWalkLeft
+                MoveSpeed=-10
+            if event.key == K_RIGHT:
+                metaAction=MetaWalkRight
+                MoveSpeed=10
+            if event.key == K_DOWN:
+                metaAction=MetaDuck
+                Y+=20
+            if event.key == K_q:
+                kirbyAction=kirbyRunLeft
+                moveSpeed=-20
+            if event.key == K_e:
+                kirbyAction=kirbyRunRight
+                moveSpeed=20
+##            if event.key == K_k:
+##                kirbyAction=kSuck1
+##                movespeed=0
+##                kirbySucking=1
+##                if kirbySucking == 1:
+##                    kirbyAction=kirbySucking3
+##                elif K_k == KEYUP:
+##                    kirbyAction=kSuck2
+##                    kirbySucking=2
+            if event.key == K_j:
+                kirbyAction=kirbyStab
+                movespeed=0
+            if event.key == K_h:
+                kirbyAction=kirbyHurt
+                movespeed=1
+                jumpspeed=20
+            if event.key == K_ESCAPE:
+                pygame.quit()
+                exit()
+            if event.key == K_d:
+                kirbyAction=kirbyWalkingRight
+                moveSpeed=10
+            if event.key == K_w:
+                kirbyAction=KirbyJumpLand
+                jumpSpeed=-10
+          ##      kirbyJumpSound.play()
+            if event.key == K_a:
+                kirbyAction = kirbyWalkingLeft
+                moveSpeed = -10
+        elif event.type == KEYUP:
+            if event.key == K_k:
+                kirbyAction=kSuck2
+            else:
+                kirbyAction=kirbyBasic
+            kFrame=0
+            mFrame=0
+            moveSpeed=0
+            jumpspeed=0
+            MoveSpeed=0
+            JumpSpeed=0
+            Y=535
+            metaAction=MetaBasic
+        
+                
